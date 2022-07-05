@@ -91,6 +91,7 @@ body {
   color: var(--color-white);
   background-color: var(--color-dark-blue);
   position: relative;
+  padding-top: 5rem;
 }
 
 header {
