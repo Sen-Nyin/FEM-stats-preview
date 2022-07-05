@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+*:where(:not(html, iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: revert;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  line-break: after-white-space;
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+:root {
+  font-size: 62.5%;
+  --color-dark-blue: hsl(233, 47%, 7%);
+  --color-desaturated-blue: hsl(244, 38%, 16%);
+  --color-violet: hsl(277, 64%, 61%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-transparent-white-one: hsla(0, 0%, 100%, 0.75);
+  --color-transparent-white-two: hsla(0, 0%, 100%, 0.6);
+  --font-size-default: 1.5rem;
+  --font-fam-default: "Inter", sans-serif;
+  --font-fam-secondary: "Lexend Deca", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: var(--font-fam-default);
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-white);
+  background-color: var(--color-dark-blue);
+  position: relative;
+}
+
+header {
+  position: absolute;
+  top: 2rem;
+}
+header a {
+  color: #1DA1F2;
+}
+header a:hover {
+  text-decoration: underline;
+}
+
+.stats {
+  max-width: 32.7rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background-color: var(--color-desaturated-blue);
+  display: grid;
+  grid-template-areas: "image" "text";
+}
+@media only screen and (min-width: 75em) {
+  .stats {
+    grid-template-areas: "text image";
+    max-width: 111rem;
+  }
+}
+.stats__image {
+  background-color: var(--color-violet);
+  grid-area: image;
+  width: 32.7rem;
+  height: 24rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.stats__image::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url(../images/image-header-mobile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+}
+@media only screen and (min-width: 75em) {
+  .stats__image::after {
+    background: url(../images/image-header-desktop.jpg);
+  }
+}
+@media only screen and (min-width: 75em) {
+  .stats__image {
+    width: 54rem;
+    height: auto;
+  }
+}
+.stats__text {
+  grid-area: text;
+  text-align: center;
+  padding: 4.7rem 3.15rem 3.2rem;
+}
+@media only screen and (min-width: 75em) {
+  .stats__text {
+    padding: 7.1rem 7.2rem 5.9rem;
+    text-align: left;
+  }
+}
+.stats__text-header {
+  font-size: 2.8rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 3.2rem;
+  padding-bottom: 1.6rem;
+}
+@media only screen and (min-width: 75em) {
+  .stats__text-header {
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    padding-bottom: 2.5rem;
+  }
+}
+.stats__text-header--coloured {
+  color: var(--color-violet);
+}
+.stats__text-main {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  color: var(--color-transparent-white-one);
+  padding-bottom: 4rem;
+}
+@media only screen and (min-width: 75em) {
+  .stats__text-main {
+    padding-bottom: 7.2rem;
+  }
+}
+.stats__figures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+@media only screen and (min-width: 75em) {
+  .stats__figures {
+    flex-direction: row;
+    justify-content: start;
+    gap: 6.3rem;
+  }
+}
+.stats__figures-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.stats__figures-header {
+  font-size: 2.4rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 2.9rem;
+}
+.stats__figures-text {
+  font-family: var(--font-fam-secondary);
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  color: var(--color-transparent-white-two);
+  letter-spacing: 1px;
+}/*# sourceMappingURL=main.css.map */

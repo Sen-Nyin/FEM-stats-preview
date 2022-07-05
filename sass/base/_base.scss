@@ -1,0 +1,168 @@
+@use "../abstracts" as a;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+
+:root {
+  // Set browser default font size to 10px
+  font-size: 62.5%;
+
+  // Colours
+  --color-dark-blue: hsl(233, 47%, 7%); // (main background)
+  --color-desaturated-blue: hsl(244, 38%, 16%); // (card background)
+  --color-violet: hsl(277, 64%, 61%); // (accent)
+
+  --color-white: hsl(0, 0%, 100%); // (main heading, stats)
+  --color-transparent-white-one: hsla(0, 0%, 100%, 0.75); // (main paragraph)
+  --color-transparent-white-two: hsla(0, 0%, 100%, 0.6); // (stat headings)
+
+  // FONTS
+
+  --font-size-default: 1.5rem;
+  --font-fam-default: "Inter", sans-serif;
+  --font-fam-secondary: "Lexend Deca", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+body {
+  @include a.bodyCenter();
+  font-family: var(--font-fam-default);
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-white);
+  background-color: var(--color-dark-blue);
+  position: relative;
+}
+
+header {
+    position: absolute;
+    top: 2rem;
+
+    & a {
+        color: #1DA1F2;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.stats {
+  max-width: 32.7rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background-color: var(--color-desaturated-blue);
+
+  display: grid;
+  grid-template-areas: "image" "text";
+
+  @include a.breakpoint(xl, min) {
+    grid-template-areas: "text image";
+    max-width: 111rem;
+  }
+
+  &__image {
+    background-color: var(--color-violet);
+    grid-area: image;
+    width: 32.7rem;
+    height: 24rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: url(../images/image-header-mobile.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      mix-blend-mode: multiply;
+      opacity: 0.75;
+
+      @include a.breakpoint(xl, min) {
+        background: url(../images/image-header-desktop.jpg);
+      }
+    }
+
+    @include a.breakpoint(xl, min) {
+      width: 54rem;
+      height: auto;
+    }
+  }
+
+  &__text {
+    grid-area: text;
+    text-align: center;
+    padding: 4.7rem 3.15rem 3.2rem;
+
+    @include a.breakpoint(xl, min) {
+      padding: 7.1rem 7.2rem 5.9rem;
+      text-align: left;
+    }
+
+    &-header {
+      font-size: 2.8rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 3.2rem;
+      padding-bottom: 1.6rem;
+
+      @include a.breakpoint(xl, min) {
+        font-size: 3.6rem;
+        line-height: 4.4rem;
+        padding-bottom: 2.5rem;
+      }
+
+      &--coloured {
+        color: var(--color-violet);
+      }
+    }
+
+    &-main {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 2.5rem;
+      color: var(--color-transparent-white-one);
+      padding-bottom: 4rem;
+
+      @include a.breakpoint(xl, min) {
+        padding-bottom: 7.2rem;
+      }
+    }
+  }
+
+  &__figures {
+    @include a.flex(column, 0, 0);
+    gap: 2.4rem;
+
+    @include a.breakpoint(xl, min) {
+      flex-direction: row;
+      justify-content: start;
+      gap: 6.3rem;
+    }
+
+    &-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    &-header {
+      font-size: 2.4rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 2.9rem;
+    }
+
+    &-text {
+      font-family: var(--font-fam-secondary);
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      text-transform: uppercase;
+      color: var(--color-transparent-white-two);
+      letter-spacing: 1px;
+    }
+  }
+}
